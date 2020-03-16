@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% set active_page = "signup" %}
+{% block title %} Rain Blog: Sign Up {% endblock %}
+{% block content %}
+<br>
+<h1>Sign up for a weekly forecast!</h1>
+<br>
+{% if form.errors %}
+    <ul class="alert-warning list-unstyled">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="post" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.name.label }}{{ form.name(class_="form-control") }}
+    {{ form.email.label }}{{ form.email(class_="form-control") }}
+    {{ form.password.label }}{{ form.password(class_="form-control") }}
+    {{ form.confirm.label }}{{ form.confirm(class_="form-control") }}
+    <br>{{ form.submit(class_="btn btn-primary") }}
+</form>
+{% endblock %}

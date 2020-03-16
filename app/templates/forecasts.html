@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% set active_page = "forecasts" %}
+{% block title %}Rain Blog: Forecasts{% endblock %}
+{% block content %}
+{% if forecasts|length %}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date & Time</th>
+        <th scope="col">City</th>
+        <th scope="col">Forecast</th>
+        <th scope="col">Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for forecast in forecasts %}
+    <tr>
+        <td>{{ forecast.user_name }}</td>
+        <td>{{ forecast.forecast_datetime }}</td>
+        <td>{{ forecast.city_name }}</td>
+        <td>{{ forecast.forecast }}</td>
+        <td>{{ forecast.comment }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Sorry, no forecasts are available at this time</p>
+{% endif %}
+{% endblock %}

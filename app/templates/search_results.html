@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Rain Blog: Search results{% endblock %}
+{% block content %}
+{% if results|length %}
+{# Variable is not empty #}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">City</th>
+    </tr>
+    </thead>
+    <tbody> {% for result in results %}
+    <tr>
+        <td>{{ result.city }}</td>
+    </tr>
+     {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{# Variable is empty #}
+<p>Sorry, no cities found</p>
+{% endif %}
+{% endblock %}
